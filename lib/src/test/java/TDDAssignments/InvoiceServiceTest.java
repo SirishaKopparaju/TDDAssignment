@@ -1,10 +1,22 @@
 package TDDAssignments;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 
 public class InvoiceServiceTest {
+
+	InvoiceGenerator invoiceGenerator=null;
+	private int time;
+	private double Distance;
+	
+	@Before
+	public void setup() throws Exception{
+		invoiceGenerator =new InvoiceGenerator();
+		
+	}
+	
 	@Test
     public void givenDistanceAndTime_ShouldReturn(){
         InvoiceGenerator invoiceGenerator=new InvoiceGenerator();
@@ -31,8 +43,21 @@ public class InvoiceServiceTest {
         Ride[] rides= {new Ride(2.0,5),
         		       new Ride(0.1,1)	
         		       };
-       double fare= invoiceGenerator.CalculateFare(rides);
-       Assert.assertEquals(30, fare, 0.0);
+      double fare= invoiceGenerator.CalculateFare(Distance,time);
+      Assert.assertEquals(30, fare, 0.0);
 
 }
+	@Test
+	public void givenDistanceAndTime_ShouldReturnInvoiceSummary(){
+	 
+        Ride[] rides= {new Ride(2.0,5),
+        		       new Ride(0.1,1)	
+        		       };
+       InvoiceSummary summary= invoiceGenerator.CalculateFare(rides);
+       InvoiceSummary exceptedSummary=new InvoiceSummary(2,3.0);
+       Assert.assertEquals(exceptedSummary, summary);
+
+}
+
+	
 }
