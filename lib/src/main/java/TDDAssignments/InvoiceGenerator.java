@@ -13,6 +13,17 @@ public class InvoiceGenerator {
 	    	  return MIN_FARE;
 	      return totalfare;
 	    }
+
+
+		public double CalculateFare(Ride[] rides) {
+			double totalFare=0;
+			for(Ride ride:rides) {
+				totalFare+=this.CalculateFare(ride.distance,ride.time);
+				
+			}
+			return totalFare;
+			
+		}
 	}
 	
 
