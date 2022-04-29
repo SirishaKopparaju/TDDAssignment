@@ -26,5 +26,13 @@ public boolean equals(Object obj) {
 			&& numberofrides == other.numberofrides
 			&& Double.doubleToLongBits(totalfare) == Double.doubleToLongBits(other.totalfare);
 }
+@Override
+public String toString() {
+    return "InvoiceSummary{" +
+            "averageride=" + averageride +
+            ", numberofrides=" + numberofrides +
+            ", totalfare=" + totalfare +
+            '}';
+}
 }
 
