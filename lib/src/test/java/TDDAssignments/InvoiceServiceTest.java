@@ -1,5 +1,7 @@
 package TDDAssignments;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -70,6 +72,17 @@ public class InvoiceServiceTest {
 	    InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2,30);
 	    Assert.assertEquals(expectedInvoiceSummary,summary);
 	}
-
+	@Test
+	  public void givenNormalAndPremiumRides_ShouldReturnInvoiceSummary() {
+	    String user1 = "karthik";
+	    Ride[] rides1 = {new Ride(RideCategory.PREMIUM,2.0, 5), new Ride(RideCategory.NORMAL,0.1, 1)};
+	    InvoiceService.addRides(user1,rides1);
+	    String user2 = "benki";
+	    Ride[] rides2 = {new Ride(RideCategory.PREMIUM,3.0, 5), new Ride(RideCategory.NORMAL,0.1, 1)};
+	    invoiceGenerator.addRides(user2,rides2);
+	    InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(user1);
+	    InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 45);
+	    assertEquals(expectedInvoiceSummary,summary);
+	  }
 	
 }
