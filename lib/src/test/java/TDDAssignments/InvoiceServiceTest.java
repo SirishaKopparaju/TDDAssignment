@@ -11,7 +11,18 @@ public class InvoiceServiceTest {
         double Distance=2.0;
         int time=5;
        double fare= invoiceGenerator.CalculateFare(Distance,time);
-       Assert.assertEquals(7, fare, 0.0);
+       Assert.assertEquals(25, fare, 0.0);
+
+
+
+    }
+	@Test
+	public void givenDistanceAndTime_ShouldReturnMinFare(){
+        InvoiceGenerator invoiceGenerator=new InvoiceGenerator();
+        double Distance=0.1;
+        int time=1;
+       double fare= invoiceGenerator.CalculateFare(Distance,time);
+       Assert.assertEquals(5, fare, 0.0);
 
 
 
